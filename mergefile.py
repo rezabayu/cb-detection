@@ -3,15 +3,14 @@ import pandas as pd
 
 # 1. Tentukan format nama file dan buat list untuk menampung dataframe
 all_dataframes = []
-output_combined_file = 'sounding_indices_2020_full_year.xlsx'
+output_combined_file = 'data/raw/sounding_indices_96749_full.xlsx'
 
 print("Memulai proses penggabungan file Excel...")
 
-# 2. Lakukan perulangan dari bulan 1 sampai 12
-for month in range(1, 13):
-    # Format angka bulan menjadi 2 digit (01, 02, 03, dst)
-    month_str = f"{month:02d}"
-    file_name = f"sounding_indices_2020_{month_str}.xlsx"
+# 2. Lakukan perulangan dari tahun 2020 sampai 2024
+for year in range(2020, 2025):
+    year_str = f"{year}"
+    file_name = f"data/raw/soundings_96749_{year_str}.xlsx"
     
     # 3. Periksa apakah file tersebut ada di dalam folder
     if os.path.exists(file_name):
