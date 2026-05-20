@@ -3,9 +3,9 @@ import pandas as pd
 from datetime import datetime
 
 # 1. Tentukan nama file HTML input dan file Excel output
-bulan = '12'  # Ganti dengan bulan yang diinginkan (format MM)
-html_file_path = f'sounding_2020_{bulan}.html'
-excel_file_path = f'sounding_indices_2020_{bulan}.xlsx'
+bulan = '01'  # Ganti dengan bulan yang diinginkan (format MM)
+html_file_path = f'sounding_2021_{bulan}.html'
+excel_file_path = f'sounding_indices_2021_{bulan}.xlsx'
 
 # 2. Baca isi keseluruhan file HTML
 with open(html_file_path, 'r', encoding='utf-8') as f:
