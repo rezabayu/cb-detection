@@ -63,4 +63,8 @@ NON_FEATURE_COLUMNS = {
     "cb_h3",
     "cb_h6",
     "cb_h12",
+    "Station number",
+    "Station latitude",
+    "Station longitude",
+    "Station elevation",
 }

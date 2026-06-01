@@ -1,0 +1,4 @@
+model,best_f1_threshold,best_f1_validation_f1,best_csi_threshold,best_csi_validation_csi,operational_threshold,operational_validation_pod,operational_validation_far,operational_validation_f1,operational_validation_accuracy,operational_note
+Dummy Stratified,0.1,0.3622641509433962,0.1,0.22119815668202766,0.1,0.4444444444444444,0.6942675159235668,0.3622641509433962,0.5259467040673211,Tidak ada threshold dengan POD validation >= 0.75; menggunakan F1 maksimum
+Logistic Regression,0.46,0.6225165562913907,0.46,0.4519230769230769,0.52,0.7592592592592593,0.5075075075075075,0.5974499089253188,0.6900420757363254,"POD validation >= 0.75, FAR minimum"
+Random Forest,0.41,0.6196721311475409,0.41,0.4489311163895487,0.49,0.7592592592592593,0.49382716049382713,0.6074074074074074,0.7026647966339411,"POD validation >= 0.75, FAR minimum"

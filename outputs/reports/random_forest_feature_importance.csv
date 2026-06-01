@@ -1,0 +1,30 @@
+feature,importance
+Precipitable water [mm] for entire sounding,0.10092443077442517
+K index,0.08104621650400244
+Showalter index,0.05191292001163682
+SWEAT index,0.0501525703581441
+Cross totals index,0.04315271715116752
+Level of Free Convection,0.041010073565935695
+Lifted index,0.039632771709527004
+LIFT computed using virtual temperature,0.03875442866159513
+Mean mixed layer potential temperature,0.03714464713037085
+Pres [hPa] of the Lifted Condensation Level,0.036759599801916676
+LFCT using virtual temperature,0.036371013807004686
+Mean mixed layer mixing ratio,0.03555215149479276
+Totals totals index,0.035540804059801104
+Temp [K] of the Lifted Condensation Level,0.03539940437785075
+Equivalent potential temp [K] of the LCL,0.03391576789529212
+Bulk Richardson Number,0.03382203426974591
+Convective Inhibition,0.03271787563337664
+CINS using virtual temperature,0.032399295529033666
+Bulk Richardson Number using CAPV,0.03223610995986718
+Convective Available Potential Energy,0.03149713183490398
+Equilibrum Level,0.030943659442607196
+1000 hPa to 500 hPa thickness,0.029194607495873097
+Equilibrum Level using virtual temperature,0.028971649353741802
+CAPE using virtual temperature,0.02896446036794397
+Vertical totals index,0.021983658809443807
+Station number,0.0
+Station latitude,0.0
+Station longitude,0.0
+Station elevation,0.0
