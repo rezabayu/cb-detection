@@ -329,31 +329,32 @@ def train_model(model, X_train, y_train, X_val, y_val, model_name):
     return model, history
 
 
-def evaluate_and_save(model, X_test, y_test, test_times, model_name):
-    y_prob = model.predict(X_test).ravel()
+def predict_and_save(model, X, y, times, model_name, split_name):
+    y_prob = model.predict(X).ravel()
 
-    metrics = calculate_metrics(y_test, y_prob, threshold=0.5)
+    metrics = calculate_metrics(y, y_prob, threshold=0.5)
 
-    metrics_file = METRIC_DIR / f"{model_name}_metrics.json"
+    metrics_file = METRIC_DIR / f"{model_name}_{split_name}_metrics.json"
     with open(metrics_file, "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=4)
 
     pred_df = pd.DataFrame(
         {
-            "time": test_times,
-            "y_true": y_test,
+            "time": times,
+            "y_true": y,
             "y_prob": y_prob,
             "y_pred": (y_prob >= 0.5).astype(int),
         }
     )
 
-    pred_file = METRIC_DIR / f"{model_name}_test_predictions.csv"
+    pred_file = METRIC_DIR / f"{model_name}_{split_name}_predictions.csv"
     pred_df.to_csv(pred_file, index=False)
 
-    plot_confusion_matrix(y_test, y_prob, model_name)
-    plot_roc_curve(y_test, y_prob, model_name)
+    if split_name == "test":
+        plot_confusion_matrix(y, y_prob, model_name)
+        plot_roc_curve(y, y_prob, model_name)
 
-    print(f"\n{model_name} metrics:")
+    print(f"\n{model_name} {split_name} metrics at threshold 0.5:")
     print(metrics)
 
     return metrics
@@ -432,13 +433,24 @@ def main():
     dnn = build_dnn(input_dim=X_train.shape[1])
     dnn, _ = train_model(dnn, X_train, y_train, X_val, y_val, "dnn")
 
-    dnn_metrics = evaluate_and_save(
+    dnn_val_metrics = predict_and_save(
+        dnn,
+        X_val,
+        y_val,
+        val_df["sounding_time_utc"].astype(str).to_numpy(),
+        "dnn",
+        "val",
+        )
+    
+    dnn_metrics = predict_and_save(
         dnn,
         X_test,
         y_test,
         test_df["sounding_time_utc"].astype(str).to_numpy(),
         "dnn",
-    )
+        "test",
+        )
+    
     dnn_metrics["model"] = "DNN"
     all_metrics.append(dnn_metrics)
 
@@ -490,14 +502,27 @@ def main():
         n_features=X_seq_train.shape[2],
     )
     cnn, _ = train_model(cnn, X_seq_train, y_seq_train, X_seq_val, y_seq_val, "cnn1d")
-
-    cnn_metrics = evaluate_and_save(
+    
+    time_seq_val = time_seq[seq_val_mask]
+    
+    cnn_val_metrics = predict_and_save(
+        cnn,
+        X_seq_val,
+        y_seq_val,
+        time_seq_val,
+        "cnn1d",
+        "val",
+        )
+    
+    cnn_metrics = predict_and_save(
         cnn,
         X_seq_test,
         y_seq_test,
         time_seq_test,
         "cnn1d",
-    )
+        "test",
+        )
+    
     cnn_metrics["model"] = "1D-CNN"
     all_metrics.append(cnn_metrics)
 
@@ -511,13 +536,22 @@ def main():
     )
     tcn, _ = train_model(tcn, X_seq_train, y_seq_train, X_seq_val, y_seq_val, "tcn")
 
-    tcn_metrics = evaluate_and_save(
+    tcn_val_metrics = predict_and_save(
+        tcn,
+        X_seq_val,
+        y_seq_val,
+        time_seq_val,
+        "tcn",
+        "val",)
+    
+    tcn_metrics = predict_and_save(
         tcn,
         X_seq_test,
         y_seq_test,
         time_seq_test,
         "tcn",
-    )
+        "test",)
+    
     tcn_metrics["model"] = "TCN"
     all_metrics.append(tcn_metrics)
 
