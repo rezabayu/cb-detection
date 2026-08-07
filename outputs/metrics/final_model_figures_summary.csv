@@ -1,0 +1,7 @@
+model,threshold,tn,fp,fn,tp,auc,confusion_matrix_file,roc_curve_file
+Dummy Stratified,0.5,184,167,151,112,0.4750360187622545,D:\NITIB\ANFEB\outputs\figures\final_confusion_matrix_dummy_stratified.png,D:\NITIB\ANFEB\outputs\figures\final_roc_curve_dummy_stratified.png
+Logistic Regression,0.46,236,115,50,213,0.7849869465839048,D:\NITIB\ANFEB\outputs\figures\final_confusion_matrix_logistic_regression.png,D:\NITIB\ANFEB\outputs\figures\final_roc_curve_logistic_regression.png
+Random Forest,0.4,216,135,43,220,0.7962421327440339,D:\NITIB\ANFEB\outputs\figures\final_confusion_matrix_random_forest.png,D:\NITIB\ANFEB\outputs\figures\final_roc_curve_random_forest.png
+DNN,0.39,242,109,64,199,0.7777398632911942,D:\NITIB\ANFEB\outputs\figures\final_confusion_matrix_dnn.png,D:\NITIB\ANFEB\outputs\figures\final_roc_curve_dnn.png
+1D-CNN_w7,0.61,218,133,57,206,0.7436330744315535,D:\NITIB\ANFEB\outputs\figures\final_confusion_matrix_1dcnn_w7.png,D:\NITIB\ANFEB\outputs\figures\final_roc_curve_1dcnn_w7.png
+TCN_w5,0.4,215,136,55,208,0.761409552284077,D:\NITIB\ANFEB\outputs\figures\final_confusion_matrix_tcn_w5.png,D:\NITIB\ANFEB\outputs\figures\final_roc_curve_tcn_w5.png
